@@ -2,14 +2,6 @@ import './less/index.less'
 
 // Your code goes here!
 
-const nav = document.querySelector('.nav');
-nav.addEventListener('mouseup', (e) => {
-    e.target.style.background = 'green';
-})
-
-nav.addEventListener('mousedown', (e) => {
-   e.target.style.background = 'purple';
-})
 
 /* mousedown, mouseup, and click
 When you click an element, there are no less than three mouse events fire in the following sequence:
@@ -26,19 +18,6 @@ In both cases, the click event never fires.*/
 
 
 
-const logo = document.querySelector('.logo-heading');
-logo.addEventListener('mouseover', (e) => {
-    e.target.style.backgroundColor = 'red';
-    
-})
-logo.addEventListener('mouseout', (e) => {
-    e.target.style.backgroundColor = 'white';
-})
-logo.addEventListener('mouseover', (e) => {
- e.target.style.transform = 'rotate(360deg)';
- e.target.style.transition = '3s';
-
-})
 window.addEventListener('load', () => {
     alert('Fun Bus Adventures!!')
 })
@@ -49,24 +28,61 @@ header.addEventListener('wheel', function() {
 header.style.background = 'yellow';
  
 })
+const nav = document.querySelector('.nav');
+nav.addEventListener('mouseup', (e) => {
+    e.target.style.background = 'green';
+})
 
+nav.addEventListener('mousedown', (e) => {
+   e.target.style.background = 'purple';
+})
 let help = document.querySelector('.logo-heading');
 help.addEventListener('dragstart', (e) => {
-    e.target.textContent = 'Have fun with  the FUN BUS!!'
+    e.target.textContent = 'Have fun with  the FUN BUS!!';
+
+    help.addEventListener('dragend', (e) => {
+      e.target.classList.textContent.remove = 'Have fun with  the FUN BUS!!'
+    })
 });
 
-// const introImg = document. querySelector('.intro');
-// introImg.addEventListener('mouseenter', () => {
-//     introImg.style.transform = 'scale(1.2)';
-//     introImg.style.transition = 'all 0.3s';
+const introImg = document. querySelector('.intro');
+introImg.addEventListener('mouseenter', (e) => {
+  e.target.style.backgroundColor = 'red';
     
-// })
-// introImg.addEventListener('mouseleave', (e) => {
-//     e.target.transform = 'scale(0.0)';
-   
-// })
-
-const introImg = document.querySelector('.intro');
-introImg.addEventListener('resize', (e) => {
-    e.target.resize = ''
+  introImg.addEventListener('mouseleave', (e) => {
+    e.target.style.backgroundColor = 'white';
+  })
 })
+
+
+
+
+function buttonCreator(text){
+    let button = document.createElement('button');// creates butoon in memory
+  
+    button.textContent = text;
+    button.classList.add('button');// adds a class
+    button.classList.add('large-button');// adds a class
+  
+  
+  
+    button.addEventListener('click', (event) => {
+      alert(`The button clicked says: ${event.target.textContent}`)
+    });
+    return button
+  }
+  
+  const button = buttonCreator('THIS IS A BUTTON COMPONENT');
+  const button2 = buttonCreator('THIS IS A SECOND COMPONENT');
+  console.log('the product is this:', button)
+  
+  
+  let textContent = document.querySelector('.text-content');// parent element
+  textContent.appendChild(button);
+  textContent.appendChild(button2)
+  textContent.appendChild(buttonCreator('THIS IS A THIRD COMPONENT'));
+  textContent.appendChild(buttonCreator('THIS IS A FOURTH COMPONENT'));
+  
+
+
+
